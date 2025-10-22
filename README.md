@@ -1,4 +1,4 @@
-# Import Passwords
+# Import Passwords into Password folder
 
 # Pre-requisite:
 
@@ -24,7 +24,9 @@ g. password_category = <Password_Category> **Optional Field**
 h. url =	<Site_URL> **Optional Field**
 i. notes = <Additional_Notes> **Optional Field**
 
-2. This script will fetch the information from the CSV file and first find the Organization with extract same name and extract the organization ID via API calls. This script will not attempt to create an organization in IT Glue. **Please make sure the organization already exists**
+2. This script will fetch the information from the CSV file, first find the organization with the same name, and extract the organization ID via API calls. This script will not attempt to create an organization in IT Glue. **Please make sure the organization already exists**
 
-3. 
+3. The script will attempt to create the Password folder if the folder with the same name does not exist in IT Glue, and for password categories.
+
+Please download the CSV file attached for the template.
 
