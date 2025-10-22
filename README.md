@@ -28,5 +28,7 @@ i. notes = <Additional_Notes> **Optional Field**
 
 3. The script will attempt to create the Password folder if the folder with the same name does not exist in IT Glue, and for password categories.
 
-Please download the CSV file attached for the template.
+Please download the CSV file attached for the template. This script is not capable of adding resource ID and resource type to the passwords. However, feel free to update the script and add that section.
+
+# Thank you for the Support!
 
