@@ -71,7 +71,7 @@ function get_org_id {
     )
     try{
 
-        $org_url = "https://api.eu.itglue.com/organizations?filter[name]=$org_name"
+        $org_url = "https://api.itglue.com/organizations?filter[name]=" + [uri]::EscapeDataString($org_name)
 
         $find_org = Invoke-RestMethod -Uri $org_url -Method 'GET' -Headers $headers
 
@@ -355,3 +355,4 @@ if ($access_token -eq $null){
     $access_token = request_data
     
 }
+
