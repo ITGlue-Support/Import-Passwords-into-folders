@@ -273,7 +273,11 @@ function request_data {
     }
 
     if ($password -eq $null) {
-        $password = Read-Host "Enter your IT Glue password"
+        $maskpassword = Read-Host "Enter your MyGlue password" -AsSecureString
+
+        $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($maskpassword)
+
+        $password = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
     }
 
     $otp = Read-Host "Enter your IT Glue OTP"
@@ -288,5 +292,6 @@ if ($access_token -eq $null){
     $access_token = request_data
 
 }
+
 
 
