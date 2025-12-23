@@ -74,8 +74,13 @@ function get_org_id {
         $org_url = "https://api.itglue.com/organizations?filter[name]=" + [uri]::EscapeDataString($org_name)
 
         $find_org = Invoke-RestMethod -Uri $org_url -Method 'GET' -Headers $headers
+        if ($($find_org.data.id).Count -gt 1) {
+        
+            Write-Host "Found mutliple organization with similar name. Using the organization with id:$($find_org.data.id[0])"
+        
+        }
 
-        return $($find_org.data.id)
+        return $($find_org.data.id[0])
     }
     catch {
         Write-Host "Make sure organization $org_name already exists in IT Glue! Error: $($_.exception.message)" -ForegroundColor Red
@@ -353,5 +358,6 @@ if ($access_token -eq $null){
     $access_token = request_data
     
 }
+
 
 
