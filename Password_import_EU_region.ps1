@@ -239,24 +239,22 @@ function create_password {
     )
 
 
-$pass_create_body = @"
-{
-    "data": {
-        "type": "passwords",
-        "attributes": {
-            "organization-id": "$password_org_id",
-            "name": "$password_name",
-            "username": "$password_username",
-            "password": "$password_value",
-            "url": "$password_url",
-            "notes": "$password_notes",
-            "password-category-id": "$password_category_id",
-            "password-folder-id": "$password_folder_id",
-            "otpSecret": "$password_otp"
+$pass_create_body = @{
+    data = @{
+        type = "passwords"
+        attributes = @{
+            "organization-id"      = $password_org_id
+            name                   = $password_name
+            username               = $password_username
+            password               = $password_value
+            url                    = $password_url
+            notes                  = $password_notes
+            "password-category-id" = $password_category_id
+            "password-folder-id"   = $password_folder_id
+            otpSecret              = $password_otp
         }
     }
-}
-"@
+} | ConvertTo-Json -Depth 5
 
 Write-Host $pass_create_body
 
@@ -355,4 +353,5 @@ if ($access_token -eq $null){
     $access_token = request_data
     
 }
+
 
