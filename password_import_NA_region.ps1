@@ -1,4 +1,4 @@
-﻿############### Authorization Token ###############################
+############### Authorization Token ###############################
 
 function authorization_token
 {
@@ -28,6 +28,8 @@ try{
     $auth_headers.Add("Content-Type", "application/json")
 
     $gen_jwt_url = "https://$($subdomain).itglue.com/login?generate_jwt=1"
+
+    Write-Host $gen_jwt_url
 
     $gen_jwt = Invoke-RestMethod -Uri $gen_jwt_url -Method 'POST' -Body $body -Headers $auth_headers
 
@@ -75,7 +77,13 @@ function get_org_id {
 
         $find_org = Invoke-RestMethod -Uri $org_url -Method 'GET' -Headers $headers
 
-        return $($find_org.data.id)
+        if ($($find_org.data.id).Count -gt 1) {
+        
+            Write-Host "Found mutliple organization with similar name. Using the organization with id:$($find_org.data.id[0])"
+        
+        }
+
+        return $($find_org.data.id[0])
     }
     catch {
         Write-Host "Make sure organization $org_name already exist in IT Glue! Error: $($_.exception.message)" -ForegroundColor Red
@@ -239,24 +247,22 @@ function create_password {
     )
 
 
-$pass_create_body = @"
-{
-    "data": {
-        "type": "passwords",
-        "attributes": {
-            "organization-id": "$password_org_id",
-            "name": "$password_name",
-            "username": "$password_username",
-            "password": "$password_value",
-            "url": "$password_url",
-            "notes": "$password_notes",
-            "password-category-id": "$password_category_id",
-            "password-folder-id": "$password_folder_id",
-            "otpSecret": "$password_otp"
+$pass_create_body = @{
+    data = @{
+        type = "passwords"
+        attributes = @{
+            "organization-id"      = $password_org_id
+            name                   = $password_name
+            username               = $password_username
+            password               = $password_value
+            url                    = $password_url
+            notes                  = $password_notes
+            "password-category-id" = $password_category_id
+            "password-folder-id"   = $password_folder_id
+            otpSecret              = $password_otp
         }
     }
-}
-"@
+} | ConvertTo-Json -Depth 5
 
 Write-Host $pass_create_body
 
