@@ -10,7 +10,7 @@
 
 # Description:
 
-This is a PowerShell script that can be executed on any machine that supports PowerShell. You do not need any Admin access on your machine to run this script. For instance, in the EU and AU regions, please make sure to update the URL to use the EU and AU script. **You will need to use the IT Glue credentials to authorize and run the script.** If you have SSO enabled, then you will need to temporarily add the user to the bypass/override list. Use the script in the link here
+This is a PowerShell script that can be executed on any machine that supports PowerShell. You do not need any Admin access on your machine to run this script. For instance, in the EU and AU regions, please make sure to update the URL to use the EU and AU script. **You will need to use the IT Glue credentials to authorize and run the script.** If you have SSO enabled, then you will need to temporarily add the user to the bypass/override list. Use the script in the link [here](https://github.com/ITGlue-Support/Import-Passwords-into-folders/blob/main/Import_with%20SSO_disable.ps1)
 
 1. You need to create a CSV file with the columns shown below:
 
