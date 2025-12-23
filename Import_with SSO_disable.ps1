@@ -80,10 +80,11 @@ function get_org_id {
         if ($($find_org.data.id).Count -gt 1) {
         
             Write-Host "Found mutliple organization with similar name. Using the organization with id:$($find_org.data.id[0])"
-        
-        }
+            return $($find_org.data.id[0])
+        }else{
 
-        return $($find_org.data.id[0])
+            return $($find_org.data.id)
+        }
     }
     catch {
         Write-Host "Make sure organization $org_name already exist in IT Glue! Error: $($_.exception.message)" -ForegroundColor Red
