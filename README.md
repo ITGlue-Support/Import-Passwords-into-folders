@@ -1,5 +1,14 @@
 # Import Passwords into Password folder
 
+## Overview
+This script helps you import passwords into IT Glue password folders using the API.
+
+## Features
+- Bulk import from CSV
+- Creates folders automatically
+- Supports OTP secret
+- Works across NA, EU, AU regions
+
 # Pre-requisite:
 
 1. CVS file (With template shown below)
