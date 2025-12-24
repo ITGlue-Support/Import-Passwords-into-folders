@@ -39,5 +39,9 @@ i. notes = <Additional_Notes> **Optional Field**
 
 Please download the CSV file attached for the template. This script is not capable of adding resource ID and resource type to the passwords. However, feel free to update the script and add that section.
 
+# Things to Note
+
+The folders and passwords created via this will not inherit the security from the root folder. You will need to manaually update the security permissions for the newly created records in IT Glue.
+
 # Thank you for the Support!
 
